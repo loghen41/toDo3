@@ -1,0 +1,30 @@
+<div class="header">
+    <p class="headerText">{{ 'LISTHEADER' | translate }}</p>
+</div>
+
+<div>
+    <form ng-submit="vm.addList(vm.newList);">
+        <input class="fullInput" placeholder= "{{'LISTPLACEHOLDER' | translate }}" ng-model="vm.newList" required>
+        <button class="fullButton" type="submit">{{'LISTADD' | translate}}</button>
+    </form>
+    <no-data ng-if="!vm.lists || vm.lists.length === 0"></no-data>
+    <div id="listDiv" ng-repeat="list in vm.lists">
+        <div class = 'elementDiv' ng-class="{onDelete : list.deleting }">
+            <div class="childDiv">
+                <img ng-click='vm.markComplete(list);' class='icon' ng-src="{{list.icon}}"/>
+                <span ui-sref="task" ng-click="vm.select(list.listName)" class="name">{{list.listName | custom }}</span>
+            </div>
+            <div class="childDiv">
+                <button class="edit" ng-click="vm.openEdit(list);">{{'EDIT' | translate }}</button>
+                <img class='icon delete' ng-click="vm.delete(list);" src="../images/icons/delete.png"/>
+            </div>
+        </div>
+        <div ng-show="vm.selected === list.listName">
+            <form ng-submit="vm.edit(list, vm.newName);">
+            <input class="editInput" placeholder="{{'EDITLISTPLACEHOLDER' | translate }}" ng-model="vm.newName" required>
+            <button class="editInputButton" type="submit">{{'APPLY' | translate }}</button>
+            </form>
+        </div>
+    </div>
+    <button class="clearButton" ng-click="vm.clearCompleted()">{{'LISTCOMPLETED' | translate }}</button>
+</div>

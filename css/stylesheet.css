@@ -1,0 +1,249 @@
+/* All CSS styles are arranged Alphabetically */
+
+/* This Resets the CSS styles for margin and padding to be manually defined */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* This is the Basic Input-Box Styling */
+::-webkit-input-placeholder {
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+:-ms-input-placeholder {
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* This sets up Animations for Content Changes*/
+
+@-webkit-keyframes delete {
+    from {background-color: rgba(255, 255, 255, .9);}
+    to {background-color: red;}
+}
+
+@keyframes delete {
+    from {background-color: rgba(255, 255, 255, .9);}
+    to {background-color: red;}
+}
+
+@-webkit-keyframes load {
+    from {opacity: 0}
+    to {opacity: 1}
+}
+
+@keyframes load {
+    from {opacity: 0}
+    to {opacity: 1}
+}
+
+@-webkit-keyframes leave {
+    from {opacity: 1}
+    to {opacity: 0}
+}
+
+@keyframes leave {
+    from {opacity: 1}
+    to {opacity: 0}
+}
+
+/* This is the actual App Styling */
+
+.backButton {
+    margin-left: 5%;
+    font-size: 2em;
+    padding: .3em;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.clearButton {
+    float: right;
+    margin-top: 10px;
+    margin-right: 4.75%;
+    width: 40%;
+    font-size: 2em;
+    border-radius: 5px;
+    padding: .3em;
+}
+
+.childDiv {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: .5em;
+
+}
+
+.delete {
+    margin: .5em;
+}
+
+.edit {
+    font-size: 1em;
+    border-radius: 5px;
+    padding: .1em .5em .1em .5em;
+}
+
+.editInput {
+    width: 70%;
+    margin-left: 5%;
+    background-color: rgba(100, 100, 100, .4);
+    box-shadow: 5px;
+    height: 2em;
+    font-size: 2em;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.editInputButton {
+    width: 18%;
+    margin-left: 2%;
+    padding: .3em;
+    font-size: 2em;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.elementDiv {
+    background-color: rgba(255, 255, 255, .9);
+    border: 2px buttonface solid;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    transition: 1s;
+    height: 2em;
+    font-size: 2em;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 90%;
+    margin-left: 5%;
+
+}
+
+.elementDiv.onDelete {
+    animation: delete 1s linear;
+    -webkit-animation: delete 1s linear;
+}
+
+#footer {
+    position: fixed;
+    display: block;
+    height: 4em;
+    width: 100%;
+    background-color: black;
+    bottom:0;
+}
+
+.fullButton {
+    width: 18%;
+    margin-left: 2%;
+    height: 2em;
+    font-size: 2em;
+    border-radius: 5px;
+    margin-top: 3em;
+}
+
+.fullInput {
+    width: 70%;
+    margin-left: 5%;
+    background-color: rgba(100, 100, 100, .4);
+    box-shadow: 5px;
+    height: 2em;
+    font-size: 2em;
+    border-radius: 5px;
+    margin-top: 3em;
+}
+
+
+.header {
+    position: relative;
+    display: block;
+    height: 4em;
+    width: 100%;
+    background-color: black;
+    text-align: center;
+}
+
+.headerText {
+    color: white;
+    font-size: 3em;
+    padding: .1em;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.icon {
+    max-width: 1.5em;
+    max-height: 1.5em;
+    margin: .5em;
+}
+
+#listDiv.ng-enter {
+    animation: load 1s linear;
+    -webkit-animation: load 1s linear;
+}
+
+.name {
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
+
+.settingsSelect {
+    -webkit-appearance: button;
+    -webkit-border-radius: 2px;
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    -webkit-padding-end: 20px;
+    -webkit-padding-start: 2px;
+    background-image: url(http://i62.tinypic.com/15xvbd5.png),
+    -webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
+    background-position: 97% center;
+    background-repeat: no-repeat;
+    border: 1px solid #AAA;
+    color: #555;
+    font-size: inherit;
+    margin: 1em;
+    overflow: hidden;
+    padding: 5px 10px;
+    width: 10em;
+}
+
+.textDiv {
+    background-color: rgba(255, 255, 255, .9);
+    border: 2px solid black;
+    font-size: 2em;
+    margin-left: 5%;
+    width: 90%;
+    margin-top: 3em;
+    border-radius: 5px;
+}
+
+#theView.onLoad {
+    animation: load 1s linear;
+    -webkit-animation: load 1s linear;
+}
+
+.whiteText {
+    color: white;
+    text-decoration: none;
+    font-size: 3em;
+    margin: .3em;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
