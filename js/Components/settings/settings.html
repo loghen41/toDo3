@@ -1,21 +1,25 @@
-<div class="header">
-    <p class="headerText">{{'SELECTHEADER' | translate}}</p>
-</div>
-
-<div class="textDiv">
-    <h2>{{'SELECTDIV' | translate}}</h2>
-    <hr>
-    <span>{{'BACKGROUND' | translate}}:</span>
-    <select class="settingsSelect" ng-model="vm.selectedStyle" ng-options="style.url as style.style for style in vm.styles">
-    </select>
-    <br>
-    <span>{{'LANGUAGE' | translate}}:</span>
-    <select class="settingsSelect" ng-model="vm.selectedLanguage">
-        <option value="en" >English</option>
-        <option value="sp">Espanol</option>
-        <option value="fr">Francais</option>
-    </select>
-    <div style="text-align: right; padding: .5em;">
-        <button class="edit" ng-click="vm.applyStyles(vm.selectedStyle, vm.selectedLanguage);">{{'SETTINGSAPPLY' | translate}}</button>
+<div id="settingsComponent">
+    <div class="header">
+        <p class="headerText">{{'SELECTHEADER' | translate}}</p>
+    </div>
+    <div class="textDiv">
+        <h2>{{'SELECTDIV' | translate}}</h2>
+        <hr>
+        <span>{{'BACKGROUND' | translate}}:</span>
+        <select class="settingsSelect" ng-model="vm.selectedStyle"
+                ng-options="style.url as style.style for style in vm.styles">
+        </select>
+        <br>
+        <span>{{'LANGUAGE' | translate}}:</span>
+        <select class="settingsSelect" ng-model="vm.selectedLanguage">
+            <option value="en">English</option>
+            <option value="sp">Espanol</option>
+            <option value="fr">Francais</option>
+        </select>
+        <div style="text-align: right; padding: .5em;">
+            <button class="edit" ng-click="vm.applyStyles(vm.selectedStyle, vm.selectedLanguage);">{{'SETTINGSAPPLY' |
+                translate}}
+            </button>
+        </div>
     </div>
 </div>

@@ -41,13 +41,17 @@
 }
 
 @-webkit-keyframes load {
-    from {opacity: 0}
-    to {opacity: 1}
+    0% {position: absolute;}
+    75% {position: relative;}
+    76% {opacity: 0;}
+    100% {opacity: 1}
 }
 
 @keyframes load {
-    from {opacity: 0}
-    to {opacity: 1}
+    0% {position: absolute;}
+    75% {position: relative;}
+    76% {opacity: 0;}
+    100% {opacity: 1}
 }
 
 @-webkit-keyframes leave {
@@ -59,6 +63,7 @@
     from {opacity: 1}
     to {opacity: 0}
 }
+
 
 /* This is the actual App Styling */
 
@@ -194,11 +199,6 @@
     margin: .5em;
 }
 
-#listDiv.ng-enter {
-    animation: load 1s linear;
-    -webkit-animation: load 1s linear;
-}
-
 .name {
     text-decoration: none;
     color: black;
@@ -234,9 +234,15 @@
     border-radius: 5px;
 }
 
-#theView.onLoad {
-    animation: load 1s linear;
-    -webkit-animation: load 1s linear;
+.theView.ng-enter {
+    opacity: 0;
+    animation: load 2.60s linear;
+    -webkit-animation: load 2.60s linear;
+}
+
+.theView.ng-leave {
+    animation: leave 1s linear;
+    -webkit-animation: leave 1s linear;
 }
 
 .whiteText {

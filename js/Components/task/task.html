@@ -1,31 +1,34 @@
-<div ng-show="vm.selected === list.listName" ng-repeat="list in vm.lists">
-    <div class="header">
-        <p class="headerText">{{'TASKHEADER' | translate}} - {{list.listName | custom}}</p>
-    </div>
+<div id="taskComponent">
+    <div ng-show="vm.selected === list.listName" ng-repeat="list in vm.lists">
+        <div class="header">
+            <p class="headerText">{{'TASKHEADER' | translate}} - {{list.listName | custom}}</p>
+        </div>
 
-    <form ng-submit="vm.addTask(list, vm.newTask)">
-        <input class="fullInput" placeholder="{{'TASKPLACEHOLDER' | translate}}" ng-model="vm.newTask" required>
-        <button class="fullButton" type="submit">{{'TASKADD' | translate}}</button>
-    </form>
-    <no-data ng-if="!vm.lists || list.taskLists.length === 0"></no-data>
-    <div ng-repeat="task in list.taskLists">
-        <div class = 'elementDiv' ng-class="{onDelete : task.deleting}" >
-            <div class="childDiv">
-                <img ng-click='vm.markComplete(task);' class='icon' ng-src="{{task.icon}}"/>
-                <span class="name">{{task.taskName | custom }}</span>
+        <form ng-submit="vm.addTask(list, vm.newTask)">
+            <input class="fullInput" placeholder="{{'TASKPLACEHOLDER' | translate}}" ng-model="vm.newTask" required>
+            <button class="fullButton" type="submit">{{'TASKADD' | translate}}</button>
+        </form>
+        <no-data ng-if="!vm.lists || list.taskLists.length === 0"></no-data>
+        <div ng-repeat="task in list.taskLists">
+            <div class='elementDiv' ng-class="{onDelete : task.deleting}">
+                <div class="childDiv">
+                    <img ng-click='vm.markComplete(task);' class='icon' ng-src="{{task.icon}}"/>
+                    <span class="name" style="cursor: default">{{task.taskName | custom }}</span>
+                </div>
+                <div class='childDiv'>
+                    <button class="edit" ng-click="vm.openEdit(task);">{{'EDIT' | translate}}</button>
+                    <img class='icon delete' ng-click="vm.delete(task, list);" src="../images/icons/delete.png"/>
+                </div>
             </div>
-            <div class='childDiv'>
-                <button class="edit" ng-click="vm.openEdit(task);">{{'EDIT' | translate}}</button>
-                <img class='icon delete' ng-click="vm.delete(task, list);" src="../images/icons/delete.png"/>
+            <div ng-show="vm.selectedTask === task.taskName">
+                <form ng-submit="vm.edit(task, vm.newName);">
+                    <input class="editInput" placeholder="{{'EDITTASKPLACEHOLDER' | translate}}" ng-model="vm.newName"
+                           required>
+                    <button class="editInputButton" type="submit">{{'APPLY' | translate}}</button>
+                </form>
             </div>
         </div>
-        <div ng-show="vm.selectedTask === task.taskName">
-            <form ng-submit="vm.edit(task, vm.newName);">
-            <input class="editInput" placeholder="{{'EDITTASKPLACEHOLDER' | translate}}" ng-model="vm.newName" required>
-            <button class="editInputButton" type="submit">{{'APPLY' | translate}}</button>
-            </form>
-        </div>
+        <button class="clearButton" ng-click="vm.clearCompleted(list)">{{'TASKCOMPLETED' | translate}}</button>
     </div>
-    <button class="clearButton" ng-click="vm.clearCompleted(list)">{{'TASKCOMPLETED' | translate}}</button>
+    <button class="backButton" ui-sref="list">{{'BACKBUTTON' | translate}}</button>
 </div>
-<button class="backButton" ui-sref="list">{{'BACKBUTTON' | translate}}</button>
