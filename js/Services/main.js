@@ -25,26 +25,31 @@
                             listName: 'Make Breakfast',
                             completed: false,
                             icon: 'images/icons/notComplete.png',
+                            deleting: false,
                             taskLists: [
                                 {
                                     taskName: 'Buy Eggs',
                                     completed: false,
-                                    icon: 'images/icons/notComplete.png'
+                                    icon: 'images/icons/notComplete.png',
+                                    deleting: false
                                 },
                                 {
                                     taskName: 'Buy Bacon',
                                     completed: false,
-                                    icon: 'images/icons/notComplete.png'
+                                    icon: 'images/icons/notComplete.png',
+                                    deleting: false
                                 },
                                 {
                                     taskName: 'Buy Cheese',
                                     completed: false,
-                                    icon: 'images/icons/notComplete.png'
+                                    icon: 'images/icons/notComplete.png',
+                                    deleting: false
                                 },
                                 {
                                     taskName: 'Cook Omlet',
                                     completed: false,
-                                    icon: 'images/icons/notComplete.png'
+                                    icon: 'images/icons/notComplete.png',
+                                    deleting: false
                                 }
                             ]
                         },
@@ -52,6 +57,7 @@
                             listName: 'Take A Nap',
                             completed: false,
                             icon: 'images/icons/notComplete.png',
+                            deleting: false,
                             taskLists: []
                         }
                     ];
@@ -95,6 +101,7 @@
                         listName: listName,
                         completed: false,
                         icon: 'images/icons/notComplete.png',
+                        deleting: false,
                         taskLists: []
                     });
                 return lists;
@@ -105,7 +112,8 @@
                 var task = {
                     taskName: taskName,
                     completed: false,
-                    icon: 'images/icons/notComplete.png'
+                    icon: 'images/icons/notComplete.png',
+                    deleting: false
                 };
 
                 list.taskLists.push(task);
@@ -119,6 +127,7 @@
                 if (list === undefined) {
                     for (var i = 0; i < lists.length; i++) {
                         if (lists[i].completed === true) {
+                            lists[i].deleting = true;
                             completedArray.push(lists[i]);
                         }
                     }
@@ -134,6 +143,7 @@
                 else {
                     for (var i = 0; i < list.taskLists.length; i++) {
                         if (list.taskLists[i].completed === true) {
+                            list.taskLists[i].deleting = true;
                             completedArray.push(list.taskLists[i]);
                         }
                     }
@@ -150,6 +160,7 @@
             //The Delete function, for both Tasks and Lists
             this.delete = function (item, secondItem) {
                 if (secondItem !== undefined) {
+                    item.deleting = true;
                     var index = secondItem.taskLists.indexOf(item);
 
                     $timeout(function () {
@@ -157,8 +168,8 @@
                     }, 1000);
                 }
                 else {
+                    item.deleting = true;
                     var index = lists.indexOf(item);
-
                     $timeout(function () {
                         lists.splice(index, 1);
                     }, 1000)
