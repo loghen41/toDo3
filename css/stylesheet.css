@@ -42,15 +42,15 @@
 
 @-webkit-keyframes load {
     0% {position: absolute;}
+    40% {opacity: 0;}
     75% {position: relative;}
-    76% {opacity: 0;}
     100% {opacity: 1}
 }
 
 @keyframes load {
     0% {position: absolute;}
+    40% {opacity: 0;}
     75% {position: relative;}
-    76% {opacity: 0;}
     100% {opacity: 1}
 }
 
@@ -236,13 +236,13 @@
 
 .theView.ng-enter {
     opacity: 0;
-    animation: load 2.60s linear;
-    -webkit-animation: load 2.60s linear;
+    animation: load 2s linear;
+    -webkit-animation: load 2s linear;
 }
 
 .theView.ng-leave {
-    animation: leave 1s linear;
-    -webkit-animation: leave 1s linear;
+    animation: leave .75s linear;
+    -webkit-animation: leave .75s linear;
 }
 
 .whiteText {

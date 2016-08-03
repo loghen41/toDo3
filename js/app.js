@@ -38,7 +38,7 @@ var app = angular.module('App', ['ui.router', 'ngStorage', 'pascalprecht.transla
             'TASKPLACEHOLDER': 'Add a new Task',
             'TASKADD': 'Add Task',
             'EDITTASKPLACEHOLDER': "Edit Task Name Here",
-            'TASKCOMPLETED': 'Clear completed lists',
+            'TASKCOMPLETED': 'Clear completed tasks',
             'BACKBUTTON': 'Back to Lists',
             //Settings Translations
             'SELECTHEADER': 'App Settings',

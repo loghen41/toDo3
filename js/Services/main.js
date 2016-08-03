@@ -3,7 +3,7 @@
         .service('mainService', function ($localStorage, $timeout, $http, $translate) {
 
 
-            $localStorage.lists = undefined;
+            //$localStorage.lists = undefined;
 
             //This function establishes the parameters for each load
             function onInit () {
