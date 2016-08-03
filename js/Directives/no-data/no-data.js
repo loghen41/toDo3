@@ -9,7 +9,7 @@
                     bindToController: {},
                     controller: dataController,
                     controllerAs: 'vm',
-                    templateUrl: '../js/Directives/no-data/no-data.html'
+                    templateUrl: 'js/Directives/no-data/no-data.html'
                 }
             }
         );

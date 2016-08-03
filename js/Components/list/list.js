@@ -2,7 +2,7 @@
     angular.module('App')
         .component('list', {
             bindings: {},
-            templateUrl: '../js/Components/list/list.html',
+            templateUrl: 'js/Components/list/list.html',
             controller: listController,
             controllerAs: 'vm'
         });

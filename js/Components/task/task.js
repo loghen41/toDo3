@@ -2,7 +2,7 @@
     angular.module('App')
         .component('task', {
             bindings: {},
-            templateUrl: '../js/Components/task/task.html',
+            templateUrl: 'js/Components/task/task.html',
             controller: taskController,
             controllerAs: 'vm'
         });

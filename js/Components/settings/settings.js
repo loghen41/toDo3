@@ -4,7 +4,7 @@ angular.module('App')
        bindings: {
            background: '='
        },
-        templateUrl: '../js/Components/settings/settings.html',
+        templateUrl: 'js/Components/settings/settings.html',
         controller: settingsController,
         controllerAs: 'vm'
     });

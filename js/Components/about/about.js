@@ -2,7 +2,7 @@
 angular.module('App')
     .component('about',{
        bindings: {},
-        templateUrl: '../js/Components/about/about.html',
+        templateUrl: 'js/Components/about/about.html',
         controller: aboutController,
         controllerAs: 'vm'
     });
