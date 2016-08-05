@@ -7,7 +7,7 @@
             controllerAs: 'vm'
         });
 
-    function taskController(mainService) {
+    function taskController(listService, $mdToast) {
         var vm = this;
         vm.deleting = false;
         vm.$onInit = onInit;
@@ -15,31 +15,32 @@
 
         //Component Functions are arranged in alphabetical order
 
-        //This calls the mainService to add a Task to  List
+        //This calls the listService to add a Task to  List
         this.addTask = function(list, task) {
-            mainService.addTask(list, task);
+            showToast(task);
+            listService.addTask(list, task);
             vm.newTask = '';
         };
 
-        //This calls the mainService to clear all completed Tasks
+        //This calls the listService to clear all completed Tasks
         this.clearCompleted = function(list) {
-            mainService.clearCompleted(list);
+            listService.clearCompleted(list);
         };
         
-        //This calls the mainService to delete a Task from a List
+        //This calls the listService to delete a Task from a List
         this.delete = function(task, list) {
-            mainService.delete(task, list);
+            listService.delete(task, list);
         };
 
-        //This calls the mainService to edit a Task Name
+        //This calls the listService to edit a Task Name
         this.edit = function(task, newName) {
-            mainService.edit(task, newName);
+            listService.edit(task, newName);
             vm.newName = '';
         };
 
-        //This calls the mainService to mark a Task Complete
+        //This calls the listService to mark a Task Complete
         this.markComplete = function(task) {
-            mainService.markComplete(task);
+            listService.markComplete(task);
         };
 
         //This toggles open the Edit feature in the view
@@ -55,15 +56,30 @@
 
         //This function runs on component Initialization
         function onInit() {
-            vm.lists =  mainService.get();
-            vm.selected = mainService.getSelected();
+            vm.lists =  listService.get();
+            vm.selected = listService.getSelected();
         }
 
         //This function gets rid of the selected view on component Destruction
         function onDestroy() {
-            mainService.select('');
+            listService.select('');
         }
 
+        //This opens up the Toast Div
+        function showToast (taskName) {
+            var position = {
+                bottom: false,
+                top: true,
+                left: false,
+                right: true
+            };
+            $mdToast.show(
+                $mdToast.simple()
+                    .textContent(taskName + ' Added!')
+                    .position('top right')
+                    .hideDelay(3000)
+            );
+        }
     }
 
 })();

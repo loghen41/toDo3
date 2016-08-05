@@ -7,7 +7,7 @@
             controllerAs: 'vm'
         });
 
-    function listController(mainService) {
+    function listController(listService, $mdToast) {
         var vm = this;
         vm.lists = '';
         vm.selected = '';
@@ -16,16 +16,17 @@
 
         //This Component Functions are listed in alphabetical order
 
-        //This calls the mainService to add a List to the Lists Array
+        //This calls the listService to add a List to the Lists Array
         this.addList = function (newList) {
-            response = mainService.addList(newList);
+            showToast(newList);
+            response = listService.addList(newList);
             vm.lists = response;
             vm.newList = '';
         };
 
-        //This calls the mainService to clear all completed Lists
+        //This calls the listService to clear all completed Lists
         this.clearCompleted = function () {
-            mainService.clearCompleted();
+            listService.clearCompleted();
         };
 
         //This opens the Editing Feature in the View
@@ -39,34 +40,49 @@
 
         };
 
-        //This calls the mainService to Delete the List
+        //This calls the listService to Delete the List
         this.delete = function (list) {
-            mainService.delete(list);
+            listService.delete(list);
         };
 
-        //This calls the mainService to Edit the List Name
+        //This calls the listService to Edit the List Name
         this.edit = function (list, newName) {
-            mainService.edit(list, newName);
+            listService.edit(list, newName);
             vm.newName = '';
         };
 
-        //This calls the mainService to Mark the List Complete
+        //This calls the listService to Mark the List Complete
         this.markComplete = function (list) {
-
-            mainService.markComplete(list);
-
+            listService.markComplete(list);
         };
+        
 
-        //This calls the mainService to Mark the List as Selected
+        //This calls the listService to Mark the List as Selected
         this.select = function (list) {
-            mainService.select(list);
+            listService.select(list);
         };
-
+        
+        
         //This funciton is called on Initialization
         function onInit() {
-            vm.lists = mainService.get();
+            vm.lists = listService.get();
         }
 
+        //This opens up the Toast Div
+        function showToast (listName) {
+            var position = {
+                bottom: false,
+                top: true,
+                left: false,
+                right: true
+            };
+            $mdToast.show(
+                $mdToast.simple()
+                    .textContent(listName  + ' Added!')
+                    .position('top right')
+                    .hideDelay(3000)
+            );
+        }
     }
 
 })();

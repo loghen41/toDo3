@@ -4,9 +4,9 @@
             <p class="headerText">{{'TASKHEADER' | translate}} - {{list.listName | custom}}</p>
         </div>
 
-        <form ng-submit="vm.addTask(list, vm.newTask)">
-            <input class="fullInput" placeholder="{{'TASKPLACEHOLDER' | translate}}" ng-model="vm.newTask" required>
-            <button class="fullButton" type="submit">{{'TASKADD' | translate}}</button>
+        <form name="addTaskForm" ng-submit="vm.addTask(list, vm.newTask)">
+            <input name="taskInput" class="fullInput" placeholder="{{'TASKPLACEHOLDER' | translate}}" ng-model="vm.newTask" required>
+            <button ng-disabled="addTaskForm.taskInput.$invalid" class="fullButton" type="submit">{{'TASKADD' | translate}}</button>
         </form>
         <no-data ng-if="!vm.lists || list.taskLists.length === 0"></no-data>
         <div ng-repeat="task in list.taskLists">
@@ -21,10 +21,10 @@
                 </div>
             </div>
             <div ng-show="vm.selectedTask === task.taskName">
-                <form ng-submit="vm.edit(task, vm.newName);">
-                    <input class="editInput" placeholder="{{'EDITTASKPLACEHOLDER' | translate}}" ng-model="vm.newName"
+                <form name ='editTaskForm' ng-submit="vm.edit(task, vm.newName);">
+                    <input name="editTaskInput" class="editInput" placeholder="{{'EDITTASKPLACEHOLDER' | translate}}" ng-model="vm.newName"
                            required>
-                    <button class="editInputButton" type="submit">{{'APPLY' | translate}}</button>
+                    <button ng-disabled="editTaskForm.editTaskInput.$invalid" class="editInputButton" type="submit">{{'APPLY' | translate}}</button>
                 </form>
             </div>
         </div>

@@ -2,11 +2,10 @@
     <div class="header">
         <p class="headerText">{{ 'LISTHEADER' | translate }}</p>
     </div>
-
     <div>
-        <form ng-submit="vm.addList(vm.newList);">
-            <input class="fullInput" placeholder="{{'LISTPLACEHOLDER' | translate }}" ng-model="vm.newList" required>
-            <button class="fullButton" type="submit">{{'LISTADD' | translate}}</button>
+        <form name="addListForm" ng-submit="vm.addList(vm.newList);">
+            <input name="listInput" class="fullInput" placeholder="{{'LISTPLACEHOLDER' | translate }}" ng-model="vm.newList" required>
+            <button class="fullButton" type="submit" ng-disabled="addListForm.listInput.$invalid">{{'LISTADD' | translate}}</button>
         </form>
         <no-data ng-if="!vm.lists || vm.lists.length === 0"></no-data>
         <div id="listDiv" ng-repeat="list in vm.lists">
@@ -22,10 +21,10 @@
                 </div>
             </div>
             <div ng-show="vm.selected === list.listName">
-                <form ng-submit="vm.edit(list, vm.newName);">
-                    <input class="editInput" placeholder="{{'EDITLISTPLACEHOLDER' | translate }}" ng-model="vm.newName"
+                <form name="editListForm" ng-submit="vm.edit(list, vm.newName);">
+                    <input name="editListInput" class="editInput" placeholder="{{'EDITLISTPLACEHOLDER' | translate }}" ng-model="vm.newName"
                            required>
-                    <button class="editInputButton" type="submit">{{'APPLY' | translate }}</button>
+                    <button ng-disabled="editListForm.editListInput.$invalid" class="editInputButton" type="submit">{{'APPLY' | translate }}</button>
                 </form>
             </div>
         </div>

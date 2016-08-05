@@ -1,5 +1,5 @@
 (function(){
-var app = angular.module('App', ['ui.router', 'ngStorage', 'pascalprecht.translate', 'ngAnimate'])
+var app = angular.module('App', ['ui.router', 'ngStorage', 'pascalprecht.translate', 'ngAnimate', 'ngMaterial'])
     .config(function($stateProvider, $urlRouterProvider, $translateProvider) {
         
         $urlRouterProvider.otherwise('/list');
@@ -58,7 +58,7 @@ var app = angular.module('App', ['ui.router', 'ngStorage', 'pascalprecht.transla
             'EDIT': 'Edit'
 
         });
-        $translateProvider.translations('sp', {
+        $translateProvider.translations('es', {
             //Index Translations
             'LISTS': 'Listas',
             'ABOUT': 'Informacion',

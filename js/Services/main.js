@@ -1,23 +1,11 @@
 (function () {
     angular.module('App')
-        .service('mainService', function ($localStorage, $timeout, $http, $translate) {
-
-
+        .service('listService', function ($localStorage, $timeout) {
+            
             //$localStorage.lists = undefined;
-            //$localStorage.style = undefined;
             //This function establishes the parameters for each load
             function onInit () {
-                if ($localStorage.language) {
-                    $translate.use($localStorage.language);
-                }
-                //This IF-Statement establishes the default user Style
-                if(!$localStorage.style) {
-                    $localStorage.style = {
-                        "background": "url('images/backgrounds/bamboo.jpg') no-repeat center center fixed",
-                        "background-size": "cover"
-                    };
-                }
-
+                
                 //This IF-Statement establishes the user data on the very first load
                 if (!$localStorage.lists) {
                     $localStorage.lists = [
@@ -65,32 +53,9 @@
             }
 
             onInit();
-
+            
             var lists = $localStorage.lists;
             var selected = $localStorage.selected;
-            var styleOptions = [
-                {
-                    style: 'Bamboo',
-                    url: 'images/backgrounds/bamboo.jpg'
-                },
-                {
-                    style: 'Wood',
-                    url: 'images/backgrounds/wood.jpg'
-                },
-                {
-                    style: 'Fire',
-                    url: 'images/backgrounds/fire.jpg'
-                },
-                {
-                    style: 'Pokemon',
-                    url: 'images/backgrounds/pokemon.jpg'
-                },
-                {
-                    style: 'Love',
-                    url: 'images/backgrounds/love.jpg'
-                }
-            ];
-            var selectedStyle = $localStorage.style;
 
             //all Serivce functions are shown according to alphabetical order
 
@@ -115,9 +80,7 @@
                     icon: 'images/icons/notComplete.png',
                     deleting: false
                 };
-
                 list.taskLists.push(task);
-
             };
 
             //This clears all completed Lists and Tasks Depending on What the user Selects
@@ -131,13 +94,11 @@
                             completedArray.push(lists[i]);
                         }
                     }
-
                     $timeout(function () {
                         for (var i = 0; i < completedArray.length; i++) {
                             var index = lists.indexOf(completedArray[i]);
                             lists.splice(index, 1);
                         }
-
                     }, 1000);
                 }
                 else {
@@ -147,7 +108,6 @@
                             completedArray.push(list.taskLists[i]);
                         }
                     }
-
                     $timeout(function () {
                         for (var i = 0; i < completedArray.length; i++) {
                             var index = list.taskLists.indexOf(completedArray[i]);
@@ -186,24 +146,14 @@
                 }
             };
 
-            //Getting Lists for Displaying to to View
+            //Getting Lists for Displaying to the View
             this.get = function () {
                 return lists;
             };
-
+            
             //this Will Get which List is being Viewed
             this.getSelected = function () {
                 return selected;
-            };
-
-            //This will get the Style Options for the App
-            this.getSelectedStyle = function () {
-                return selectedStyle;
-            };
-
-            //This will get the Style Options for the App
-            this.getStyles = function () {
-                return styleOptions;
             };
 
             //This Allows us to mark complete both Tasks and Lists
@@ -223,23 +173,5 @@
                 selected = item;
                 $localStorage.selected = selected;
             };
-
-            //This sets the App Language
-            this.setLanguage = function(language) {
-                $translate.use(language);
-                $localStorage.language = language;
-            };
-
-            //This sets the App Style
-            this.setStyle = function (style) {
-                selectedStyle = {
-                    "background": "url('" + style + "') no-repeat center center fixed",
-                    "background-size": "cover"
-                };
-                $localStorage.style = selectedStyle;
-            };
-
         });
-
-
 })();

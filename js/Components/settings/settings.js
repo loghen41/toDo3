@@ -9,25 +9,26 @@ angular.module('App')
         controllerAs: 'vm'
     });
     
-    function settingsController(mainService) {
+    function settingsController(settingsService) {
         vm = this;
         vm.$onInit = onInit;
         vm.styles = [];
 
         vm.applyStyles = function(style, language) {
             if (style) {
-                mainService.setStyle(style);
+                settingsService.setStyle(style);
                 vm.background.background = "url(" + style + ") no-repeat center center fixed";
                 vm.selectedStyle = undefined;
             }
             if(language) {
-                mainService.setLanguage(language);
+                settingsService.setLanguage(language);
                 vm.selectedLanguage = undefined;
             }
         };
 
         function onInit() {
-            vm.styles = mainService.getStyles();
+            vm.styles = settingsService.getStyles();
+            vm.languages = settingsService.getLanguages();
         }
     }
     

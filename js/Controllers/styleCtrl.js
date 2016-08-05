@@ -1,8 +1,8 @@
 (function(){
 angular.module('App')
-    .controller('styleCtrl', function(mainService, $translate) {
+    .controller('styleCtrl', function(settingsService) {
         this.$onInit = function() {
-            this.style = mainService.getSelectedStyle();
+            this.style = settingsService.getSelectedStyle();
         };
         
     });
