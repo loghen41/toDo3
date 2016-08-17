@@ -199,6 +199,10 @@
     margin: .5em;
 }
 
+.md-toast-text {
+    background-color: white;
+}
+
 .name {
     text-decoration: none;
     color: black;

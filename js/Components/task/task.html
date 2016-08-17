@@ -1,5 +1,5 @@
 <div id="taskComponent">
-    <div ng-show="vm.selected === list.listName" ng-repeat="list in vm.lists">
+    <div ng-if="vm.selected === list.listName" ng-repeat="list in vm.lists">
         <div class="header">
             <p class="headerText">{{'TASKHEADER' | translate}} - {{list.listName | custom}}</p>
         </div>

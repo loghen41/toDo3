@@ -70,12 +70,6 @@
 
         //This opens up the Toast Div
         function showToast (listName) {
-            var position = {
-                bottom: false,
-                top: true,
-                left: false,
-                right: true
-            };
             $mdToast.show(
                 $mdToast.simple()
                     .textContent(listName  + ' Added!')

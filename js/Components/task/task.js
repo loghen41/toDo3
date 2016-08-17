@@ -67,15 +67,9 @@
 
         //This opens up the Toast Div
         function showToast (taskName) {
-            var position = {
-                bottom: false,
-                top: true,
-                left: false,
-                right: true
-            };
             $mdToast.show(
                 $mdToast.simple()
-                    .textContent(taskName + ' Added!')
+                    .textContent( taskName  + ' Added!')
                     .position('top right')
                     .hideDelay(3000)
             );
