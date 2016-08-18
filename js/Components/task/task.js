@@ -7,7 +7,7 @@
             controllerAs: 'vm'
         });
 
-    function taskController(listService, $mdToast) {
+    function taskController(listService, toastService) {
         var vm = this;
         vm.deleting = false;
         vm.$onInit = onInit;
@@ -17,7 +17,7 @@
 
         //This calls the listService to add a Task to  List
         this.addTask = function(list, task) {
-            showToast(task);
+            toastService.showToast(task);
             listService.addTask(list, task);
             vm.newTask = '';
         };
@@ -64,16 +64,7 @@
         function onDestroy() {
             listService.select('');
         }
-
-        //This opens up the Toast Div
-        function showToast (taskName) {
-            $mdToast.show(
-                $mdToast.simple()
-                    .textContent( taskName  + ' Added!')
-                    .position('top right')
-                    .hideDelay(3000)
-            );
-        }
+        
     }
 
 })();

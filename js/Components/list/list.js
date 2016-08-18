@@ -7,7 +7,7 @@
             controllerAs: 'vm'
         });
 
-    function listController(listService, $mdToast) {
+    function listController(listService, toastService) {
         var vm = this;
         vm.lists = '';
         vm.selected = '';
@@ -18,7 +18,7 @@
 
         //This calls the listService to add a List to the Lists Array
         this.addList = function (newList) {
-            showToast(newList);
+            toastService.showToast(newList);
             response = listService.addList(newList);
             vm.lists = response;
             vm.newList = '';
@@ -67,16 +67,7 @@
         function onInit() {
             vm.lists = listService.get();
         }
-
-        //This opens up the Toast Div
-        function showToast (listName) {
-            $mdToast.show(
-                $mdToast.simple()
-                    .textContent(listName  + ' Added!')
-                    .position('top right')
-                    .hideDelay(3000)
-            );
-        }
+        
     }
 
 })();
