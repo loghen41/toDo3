@@ -25,7 +25,7 @@ angular.module('App')
                     strArray[i] = result;
                 }
 
-                newString = strArray.join(' ');
+                var newString = strArray.join(' ');
                 return newString;
             }
         }
