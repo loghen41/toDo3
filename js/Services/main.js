@@ -1,8 +1,7 @@
 (function () {
     angular.module('App')
-        .service('listService', function ($localStorage, $timeout) {
+        .service('listService', function ($localStorage, $timeout, $firebaseObject, $firebaseArray) {
             
-            //$localStorage.lists = undefined;
             //This function establishes the parameters for each load
             function onInit () {
                 

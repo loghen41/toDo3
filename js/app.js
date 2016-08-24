@@ -1,5 +1,13 @@
 (function(){
-var app = angular.module('App', ['ui.router', 'ngStorage', 'pascalprecht.translate', 'ngAnimate', 'ngMaterial'])
+var app = angular.module('App',
+    [
+        'ui.router',
+        'ngStorage',
+        'pascalprecht.translate',
+        'ngAnimate',
+        'ngMaterial',
+        'firebase'
+    ])
     .config(function($stateProvider, $urlRouterProvider, $translateProvider) {
         
         $urlRouterProvider.otherwise('/list');
