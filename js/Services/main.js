@@ -1,63 +1,13 @@
 (function () {
     angular.module('App')
-        .service('listService', function ($localStorage, $timeout, $firebaseObject, $firebaseArray) {
+        .service('listService', function ($timeout, $firebaseObject, $firebaseArray, $firebaseAuth, $q) {
             
-            //This function establishes the parameters for each load
-            function onInit () {
-                
-                //This IF-Statement establishes the user data on the very first load
-                if (!$localStorage.lists) {
-                    $localStorage.lists = [
-                        {
-                            listName: 'Make Breakfast',
-                            completed: false,
-                            icon: 'images/icons/notComplete.png',
-                            deleting: false,
-                            taskLists: [
-                                {
-                                    taskName: 'Buy Eggs',
-                                    completed: false,
-                                    icon: 'images/icons/notComplete.png',
-                                    deleting: false
-                                },
-                                {
-                                    taskName: 'Buy Bacon',
-                                    completed: false,
-                                    icon: 'images/icons/notComplete.png',
-                                    deleting: false
-                                },
-                                {
-                                    taskName: 'Buy Cheese',
-                                    completed: false,
-                                    icon: 'images/icons/notComplete.png',
-                                    deleting: false
-                                },
-                                {
-                                    taskName: 'Cook Omlet',
-                                    completed: false,
-                                    icon: 'images/icons/notComplete.png',
-                                    deleting: false
-                                }
-                            ]
-                        },
-                        {
-                            listName: 'Take A Nap',
-                            completed: false,
-                            icon: 'images/icons/notComplete.png',
-                            deleting: false,
-                            taskLists: []
-                        }
-                    ];
-                }
-            }
-
-            onInit();
+            var user;
+            var lists;
             
-            var lists = $localStorage.lists;
-            var selected = $localStorage.selected;
-
+            
             //all Serivce functions are shown according to alphabetical order
-
+            
             //Adding a List to the Lists Array
             this.addList = function (listName) {
                 lists.push(
@@ -155,6 +105,28 @@
                 return selected;
             };
 
+            //This is how the user credentials are authenticated
+            this.login = function (provider) {
+                var auth = $firebaseAuth();
+                var promise = $q.defer();
+               auth.$signInWithPopup(provider)
+                    .then(function(firebaseUser){
+                        user = firebaseUser;
+                        promise.resolve(user)
+                    }).catch(function(error) {
+                   promise.reject(error);
+                });
+                return promise.promise;
+            };
+            
+            //This is how the user logs out of the database
+            this.logout = function () {
+                var auth = $firebaseAuth();
+                auth.$signOut();
+                user = undefined;
+                return user;
+            };
+
             //This Allows us to mark complete both Tasks and Lists
             this.markComplete = function (item) {
                 if (!item.completed) {
@@ -172,5 +144,6 @@
                 selected = item;
                 $localStorage.selected = selected;
             };
+
         });
 })();

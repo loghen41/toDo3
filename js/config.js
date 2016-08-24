@@ -3,10 +3,10 @@
  */
 (function() {
     var config = {
-        apiKey: "AIzaSyDuFe1SGs9aJc1ZS9X-xPZKbPHYCE8r4Xg",
-        authDomain: "star-wars-characters.firebaseapp.com",
-        databaseURL: "https://star-wars-characters.firebaseio.com",
-        storageBucket: "star-wars-characters.appspot.com"
+        apiKey: "AIzaSyBP5I2MkFWtyDAShFT93UFTQGqUyHilfD4",
+        authDomain: "to-do-app-9d77c.firebaseapp.com",
+        databaseURL: "https://to-do-app-9d77c.firebaseio.com",
+        storageBucket: "to-do-app-9d77c.appspot.com"
     };
     firebase.initializeApp(config);
 
